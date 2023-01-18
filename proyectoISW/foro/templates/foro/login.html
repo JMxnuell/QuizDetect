@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    
+    <link rel="shortcut icon" href="../static/img/logo_quiz.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="logo">
+            <img src="../static/img/logo_quiz.png" alt="">
+        </div>
+        <div class="text-center mt-4 name">
+            <br>
+        </div>
+        <form class="p-3 mt-3" method="post">
+            {% csrf_token %}
+            <div class="form-field d-flex align-items-center">
+                <label for="user-name-id">Usuario</label>
+                {{ form.username }}
+            </div>
+            <div class="form-field d-flex align-items-center">
+                <label for="password-id">Contraseña</label>
+                {{ form.password }}
+            </div>
+            {% if form.errors %}
+            <p>Usuario o contraseña incorrecta.</p>
+            {% endif %}
+            <button class="btn mt-3">Iniciar sesión</button>
+        </form>
+        <div class="text-center fs-6">
+            <a class="nav-link" href="{% url 'Registro' %}">Crear una cuenta</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
